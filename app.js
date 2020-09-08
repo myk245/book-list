@@ -22,7 +22,7 @@ UI.prototype.addBookToList = function (book) {
       <td>${book.rating}</td>
       <td><a href="#" class="delete">X</a></td>
    `
-
+   
    list.appendChild(row); 
 }
 
