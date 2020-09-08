@@ -1,7 +1,8 @@
 // Book Constructor
-function Book(title, author, rating) {
+function Book(title, author, isbn, rating) {
    this.title = title;
    this.author = author; 
+   this.isbn = isbn; 
    this.rating = rating;
 }
 
@@ -19,6 +20,7 @@ UI.prototype.addBookToList = function (book) {
    row.innerHTML = `
       <td>${book.title}</td>
       <td>${book.author}</td>
+      <td>${book.isbn}</td>
       <td>${book.rating}</td>
       <td><a href="#" class="delete">X</a></td>
    `
@@ -57,6 +59,7 @@ UI.prototype.deleteBook = function(target) {
 UI.prototype.clearFields = function () {
    document.getElementById('title').value = '';
    document.getElementById('author').value = '';
+   document.getElementById('isbn').value = '';
    document.getElementById('rating').value = '';
 }
 
@@ -65,16 +68,17 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
    // Get form values
    const title = document.getElementById('title').value, 
       author = document.getElementById('author').value, 
+      isbn = document.getElementById('isbn').value, 
       rating = document.getElementById('rating').value
 
    // Instantiate book
-   const book = new Book(title, author, rating);
+   const book = new Book(title, author, isbn, rating);
 
    // Instantiate UI
    const ui = new UI();
 
    // Validate
-   if (title === '' || author === '' || rating === '') {
+   if (title === '' || author === '' || isbn === '' || rating === '') {
       // Error alert
       ui.showAlert('Please fill in all fields', 'error')
    } else {
